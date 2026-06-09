@@ -131,10 +131,10 @@ SynCellNet works in three stages:
 #Image Generation Quality (Genomap Fidelity)
 To evaluate the quality of SynCellNet-generated genomap images:
 
-*Classifier — confusion matrix, precision, recall, F1, and accuracy (notebook: Classifier for PBMC.ipynb / Classifier for PDO.ipynb)
-*SSIM — Structural Similarity Index (notebook: SSIM_PSNR_calculation.ipynb)
-*PSNR — Peak Signal-to-Noise Ratio (notebook: SSIM_PSNR_calculation.ipynb)
-*PDF / CDF — per-gene distribution comparisons across top highly variable genes
+**Classifier — confusion matrix, precision, recall, F1, and accuracy (notebook: Classifier for PBMC.ipynb / Classifier for PDO.ipynb)
+**SSIM — Structural Similarity Index (notebook: SSIM_PSNR_calculation.ipynb)
+**PSNR — Peak Signal-to-Noise Ratio (notebook: SSIM_PSNR_calculation.ipynb)
+**PDF / CDF — per-gene distribution comparisons across top highly variable genes
 
 #Biological Fidelity
 To evaluate whether synthetic gene expression profiles preserve real biological structure, all metrics below are computed in Metrics_Analysis_v3.ipynb across both PBMC and PDO datasets, comparing SynCellNet, SynCellNet+Copula, scGAN, and scVI against real data
