@@ -1,4 +1,4 @@
-# SynCellNet: Conditional GAN-Based Synthetic Single-Cell RNA-seq Generation
+# SynCellNet: Generative AI Framework for Single-Cell RNA Sequencing Data Generation and Validation
 
 SynCellNet is a conditional Wasserstein GAN (cWGAN) framework for generating high-fidelity synthetic single-cell RNA sequencing (scRNA-seq) data. It operates on **genomap** image representations of gene expression and includes a full reverse-transformation pipeline to recover biologically interpretable gene expression profiles.
 
