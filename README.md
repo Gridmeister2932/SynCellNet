@@ -128,60 +128,60 @@ SynCellNet works in three stages:
 ---
 
 ## Evaluation Metrics
-For evlauting SynCellNet generated genomap we had classifier (confusion metrix, precsion recall f1, accuracy,), 
-All metrics are computed in Metrics_Analysis_v3.ipynb across both PBMC and PDO datasets, comparing SynCellNet, SynCellNet+Copula, scGAN, and scVI against real data.
-Group 1 — Gene-level Distribution
+#Image Generation Quality (Genomap Fidelity)
+To evaluate the quality of SynCellNet-generated genomap images:
 
-Mean expression correlation (Pearson)
-Variance correlation (Pearson)
-Coefficient of variation (CV) correlation
-Detection rate correlation
-Fraction-zero gene correlation
-Average KS statistic across all genes
+*Classifier — confusion matrix, precision, recall, F1, and accuracy (notebook: Classifier for PBMC.ipynb / Classifier for PDO.ipynb)
+*SSIM — Structural Similarity Index (notebook: SSIM_PSNR_calculation.ipynb)
+*PSNR — Peak Signal-to-Noise Ratio (notebook: SSIM_PSNR_calculation.ipynb)
+*PDF / CDF — per-gene distribution comparisons across top highly variable genes
+
+#Biological Fidelity
+To evaluate whether synthetic gene expression profiles preserve real biological structure, all metrics below are computed in Metrics_Analysis_v3.ipynb across both PBMC and PDO datasets, comparing SynCellNet, SynCellNet+Copula, scGAN, and scVI against real data
+Group 1 — Gene-level Distribution
+    Mean expression correlation (Pearson)
+    Variance correlation (Pearson)
+    Coefficient of variation (CV) correlation
+    Detection rate correlation
+    Fraction-zero gene correlation
+    Average KS statistic across all genes
 
 Group 2 — Cell-level Distribution
-
-Library size KS statistic
-Fraction-zero per cell KS statistic
-Cell detection rate KS statistic
-Cell distance KS — KS stat between mean kNN distance distributions in PCA space
-kNN occurrence KS — KS stat between kNN occurrence-count distributions
-Local Density Factor (LDF) KS — based on Lütge et al. (CellMixS, 2021)
+    Library size KS statistic
+    Fraction-zero per cell KS statistic
+    Cell detection rate KS statistic
+    Cell distance KS — KS stat between mean kNN distance distributions in PCA space
+    kNN occurrence KS — KS stat between kNN occurrence-count distributions
+    Local Density Factor (LDF) KS — based on Lütge et al. (CellMixS, 2021)
 
 Group 3 — Bivariate Relationships
-
-Mean–variance correlation difference
-Mean–fraction-zero correlation difference
-Library size–fraction-zero correlation difference
+    Mean–variance correlation difference
+    Mean–fraction-zero correlation difference
+    Library size–fraction-zero correlation difference
 
 Group 4 — Correlation Structure
-
-Gene–gene correlation (Pearson on top 300 HVG correlation matrices)
-Marker gene correlation (top 30 DE genes by fold change)
-Cell–cell correlation
+    Gene–gene correlation (Pearson on top 300 HVG correlation matrices)
+    Marker gene correlation (top 30 DE genes by fold change)
+    Cell–cell correlation
 
 Group 5 — Distributional Similarity
-
-Average KS statistic
-Average Wasserstein distance
-Average KDE overlap (top 200 HVGs)
+    Average KS statistic
+    Average Wasserstein distance
+    Average KDE overlap (top 200 HVGs)
 
 Group 6 — Global Structural
-
-Maximum Mean Discrepancy (MMD) with RBF kernel in PCA space
-Random Forest AUC — 5-fold cross-validated classifier distinguishing real vs. synthetic
-PVE difference — |% variance explained by class label in real vs. synthetic|
-Silhouette width difference — |silhouette score in real vs. synthetic| (PCA space)
+    Maximum Mean Discrepancy (MMD) with RBF kernel in PCA space
+    Random Forest AUC — 5-fold cross-validated classifier distinguishing real vs. synthetic
+    PVE difference — |% variance explained by class label in real vs. synthetic|
+    Silhouette width difference — |silhouette score in real vs. synthetic| (PCA space)
 
 Group 7 — Biological Signal Preservation
-
-Number of differentially expressed (DE) genes (Mann–Whitney U, FDR-BH corrected)
-DE gene overlap, precision, recall, and F1 score
-Log fold change (LFC) correlation: Pearson on all genes, Pearson and Spearman restricted to real DE genes
+    Number of differentially expressed (DE) genes (Mann–Whitney U, FDR-BH corrected)
+    DE gene overlap, precision, recall, and F1 score
+    Log fold change (LFC) correlation: Pearson on all genes, Pearson and Spearman restricted to real DE genes
 
 Group 8 — Visualization
-
-PCA, t-SNE, and UMAP embeddings of real and synthetic cells across all methods
+    PCA, t-SNE, and UMAP embeddings of real and synthetic cells across all methods
 
 ---
 
