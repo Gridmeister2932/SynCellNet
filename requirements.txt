@@ -1,0 +1,32 @@
+# SynCellNet — Python dependencies
+# Python 3.9+ recommended
+# Install with: pip install -r requirements.txt
+
+# Core deep learning
+tensorflow>=2.12.0
+keras>=2.12.0
+
+# Scientific computing
+numpy>=1.23.0
+scipy>=1.10.0
+pandas>=1.5.0
+
+# Machine learning & evaluation
+scikit-learn>=1.2.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Dimensionality reduction (for UMAP plots in Metrics_Analysis)
+umap-learn>=0.5.3
+
+# Statistics
+statsmodels>=0.14.0
+
+# Image quality metrics (SSIM / PSNR)
+# Built into tensorflow.image — no extra package needed
+
+# scVI baseline (used in The Benchmark Study)
+# scvi-tools>=1.0.0   # Optional: only needed to retrain scVI from scratch
+#                       The repo already contains pre-trained weights.

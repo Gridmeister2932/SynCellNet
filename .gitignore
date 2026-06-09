@@ -1,0 +1,36 @@
+# ── Large binary / model files ─────────────────────────────────────────────
+*.h5
+*.h5ad
+*.npz
+*.data-00000-of-00001
+*.index
+checkpoint
+
+# ── Checkpoint directories ─────────────────────────────────────────────────
+ckpts/
+checkpoints/
+weights/
+__pycache__/
+*.pyc
+
+# ── Jupyter notebook checkpoints ──────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── OS files ───────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Google Colab mount artifacts ──────────────────────────────────────────
+drive/
+
+# ── Training outputs (large PCA/tSNE snapshots) ───────────────────────────
+pca_step*.png
+
+# NOTE: .npy files for normalization stats (means, stds, transformation matrices)
+# are small and SHOULD be tracked — they are required for reverse gene expression.
+# Only exclude large synthetic output .npy files if needed:
+# synthetic_*.npy
+
+# ── Large raw data files ───────────────────────────────────────────────────
+*.mtx
+OG_scGAN_pbmc_data/
