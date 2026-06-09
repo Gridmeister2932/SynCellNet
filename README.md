@@ -86,7 +86,7 @@ SynCellNet/
 
 ## Pretrained Models
 
-> **Note:** Large model files (`.h5`, `.h5ad`, checkpoints) are excluded from this repo due to GitHub's file size limits. Download them from Google Drive: [link to be added]
+> **Note:** Large model files (.h5, .h5ad, checkpoints) are excluded from this repo due to GitHub's file size limits. To have access please contact the 1st author at aqueeb.eee@gmail.com
 
 | Model | Description |
 |-------|-------------|
@@ -128,16 +128,87 @@ SynCellNet works in three stages:
 ---
 
 ## Evaluation Metrics
+For evlauting SynCellNet generated genomap we had classifier (confusion metrix, precsion recall f1, accuracy,), 
+All metrics are computed in Metrics_Analysis_v3.ipynb across both PBMC and PDO datasets, comparing SynCellNet, SynCellNet+Copula, scGAN, and scVI against real data.
+Group 1 — Gene-level Distribution
 
-Metrics computed in `Metrics_Analysis_v3.ipynb` comparing SynCellNet vs. scGAN vs. scVI vs. Copula:
+Mean expression correlation (Pearson)
+Variance correlation (Pearson)
+Coefficient of variation (CV) correlation
+Detection rate correlation
+Fraction-zero gene correlation
+Average KS statistic across all genes
 
-- KS statistic & Wasserstein distance (per-gene distribution similarity)
-- SSIM / PSNR (image-level fidelity)
-- PCA, t-SNE, UMAP visualizations
-- Random Forest classifier AUC (cell type preservation)
-- Spearman correlation of gene expression
-- Mann–Whitney U test with FDR correction
+Group 2 — Cell-level Distribution
 
+Library size KS statistic
+Fraction-zero per cell KS statistic
+Cell detection rate KS statistic
+Cell distance KS — KS stat between mean kNN distance distributions in PCA space
+kNN occurrence KS — KS stat between kNN occurrence-count distributions
+Local Density Factor (LDF) KS — based on Lütge et al. (CellMixS, 2021)
+
+Group 3 — Bivariate Relationships
+
+Mean–variance correlation difference
+Mean–fraction-zero correlation difference
+Library size–fraction-zero correlation difference
+
+Group 4 — Correlation Structure
+
+Gene–gene correlation (Pearson on top 300 HVG correlation matrices)
+Marker gene correlation (top 30 DE genes by fold change)
+Cell–cell correlation
+
+Group 5 — Distributional Similarity
+
+Average KS statistic
+Average Wasserstein distance
+Average KDE overlap (top 200 HVGs)
+
+Group 6 — Global Structural
+
+Maximum Mean Discrepancy (MMD) with RBF kernel in PCA space
+Random Forest AUC — 5-fold cross-validated classifier distinguishing real vs. synthetic
+PVE difference — |% variance explained by class label in real vs. synthetic|
+Silhouette width difference — |silhouette score in real vs. synthetic| (PCA space)
+
+Group 7 — Biological Signal Preservation
+
+Number of differentially expressed (DE) genes (Mann–Whitney U, FDR-BH corrected)
+DE gene overlap, precision, recall, and F1 score
+Log fold change (LFC) correlation: Pearson on all genes, Pearson and Spearman restricted to real DE genes
+
+Group 8 — Visualization
+
+PCA, t-SNE, and UMAP embeddings of real and synthetic cells across all methods
+
+---
+
+## Benchmark Methods
+SynCellNet is evaluated against two state-of-the-art single-cell generative models and one statistical baseline:
+
+| Method | Type | Reference |
+|--------|------|-----------|
+| **scGAN** | Conditional GAN | Marouf et al., 2020 |
+| **scVI** | Variational Autoencoder | Lopez et al., 2018 |
+| **Gaussian Copula** | Statistical baseline | — |
+
+### scGAN
+scGAN is a conditional GAN designed for scRNA-seq data generation, conditioned on cell type labels.
+- **Training notebooks**: `3.2_scGAN_newtrain_PBMC_B_MONO.ipynb` (PBMC) · `3.1_scGAN_PDO_Stem_Diff_Batch_32.ipynb` (PDO)
+- **Synthetic generation**: `scGAN_Synthetic_file_generation.ipynb`
+- **Synthetic outputs**: `Synthetic PBMC dataset/scGAN/` · `Synthetic PDO dataset/scGAN/`
+
+### scVI
+scVI is a VAE-based deep generative model that models the negative binomial distribution of scRNA-seq counts.
+- **Training notebooks**: `scVI_PBMC_B_Mono.ipynb` (PBMC) · `scVI_PDO_Stem_Diff.ipynb` (PDO)
+- **Synthetic generation**: `scVI_Synthetic_file_generation.ipynb`
+- **Synthetic outputs**: `Synthetic PBMC dataset/scVI/` · `Synthetic PDO dataset/scVI/`
+
+### Gaussian Copula
+A statistical baseline using Gaussian copula to model gene–gene dependencies and generate synthetic expression profiles.
+- **Synthetic outputs**: `Synthetic PBMC dataset/` · `Synthetic PDO dataset/Copula/`
 ---
 
 ## Citation
