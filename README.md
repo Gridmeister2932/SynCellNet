@@ -53,15 +53,18 @@ SynCellNet/
 │
 └── The Benchmark Study on scGAN & scVI/
     ├── scGAN/
-    │   ├── scGAN-master/                  ← Original scGAN source code
-    │   ├── Experiments/PBMC/              ← scGAN PBMC training runs
-    │   ├── Experiments/PDO/               ← scGAN PDO training runs
-    │   └── scGAN_Synthetic_file_generation.ipynb
+    │   ├── scGAN-master/                         ← Original scGAN source code
+    │   ├── Experiments/PBMC/                     ← scGAN PBMC training runs
+    │   ├── Experiments/PDO/                      ← scGAN PDO training runs
+    │   └── scGAN_Synthetic_file_generation.ipynb ← scGAN synthetic file generation
     └── scVI/
         ├── scVI_PBMC_B_Mono.ipynb
         ├── scVI_PDO_Stem_Diff.ipynb
-        ├── PBMC/                          ← scVI PBMC results
-        └── PDO/                           ← scVI PDO results
+        ├── scVI_Synthetic_file_generation_final.iphny ← scVI synthetic file generation
+        ├── PBMC/                                      ← scVI PBMC results
+        └── PDO/                                       ← scVI PDO results
+            ├──
+
 ```
 
 ---
