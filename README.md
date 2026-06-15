@@ -85,6 +85,31 @@ SynCellNet/
   - `3. Differential_Low_Raw_Finalized.csv`
 - **Format**: CSV, rows = cells, columns = genes
 
+## Synthetic Datasets
+
+The synthetic single-cell expression matrices used for all benchmarking tables
+and figures are provided under **`Synthetic dataset/`**, organized by generating
+method:
+
+**File format.** Each file is a CSV with **rows = cells** and **columns = genes**
+(1,600 genes, in the same order as the corresponding real-data matrix). No header,
+no index column. The number of synthetic cells in each file matches its real class.
+
+**Class labels.** `b` = B cells, `mono` = Monocytes (PBMC); `stem_high` / `high`
+= Stem-like, `diff_low` / `low` = Differentiated (PDO).
+
+**Naming / value scale.**
+
+| Prefix | Method | Scale |
+|---|---|---|
+| `new_recovered_` | SynCellNet alone (reverse-mapped genomap) | normalized float |
+| `copula_recovered_` | SynCellNet + Gaussian Copula post-processing | count-scale |
+| `scgan_synthetic_` | scGAN | count-scale |
+| `scvi_synthetic_*_v3` | scVI (posterior-predictive, class-conditional) | count-scale |
+
+All synthetic data are conditioned on the cell-type label and evaluated against
+the real data in `Metrics_Analysis_v3.ipynb`. See `Synthetic dataset/README.md`
+for a per-file breakdown.
 ---
 
 ## Pretrained Models
